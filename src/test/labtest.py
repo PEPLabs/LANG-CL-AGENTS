@@ -4,7 +4,6 @@ solution in main/lab.py. You should not modify the code in this file. You should
 also manually test your solution by running app.py.
 """
 
-import os
 import unittest
 
 from langchain.chat_models import AzureChatOpenAI
