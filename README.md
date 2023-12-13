@@ -39,6 +39,6 @@
 - This lab utilizes an LLM over an external connection, and can become inaccessible for various reasons. Running ```test_llm_sanity_check``` in ```src/main/labtest.py``` can determine if a valid connection has been established. 
 - Environment variables should be automatically configured for you upon opening the lab.
 
-[LangChain Documentation on Agents] (https://python.langchain.com/docs/modules/agents/)
+[LangChain Documentation on Agents](https://python.langchain.com/docs/modules/agents/)
 
-[Creating Custom Tools] (https://python.langchain.com/docs/modules/agents/tools/custom_tools)
+[Creating Custom Tools](https://python.langchain.com/docs/modules/agents/tools/custom_tools)
