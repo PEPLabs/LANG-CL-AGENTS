@@ -3,9 +3,8 @@ This file will contain test cases for the automatic evaluation of your
 solution in main/lab.py. You should not modify the code in this file. You should
 also manually test your solution by running app.py.
 """
-import io
+
 import os
-import sys
 import unittest
 
 from langchain.chat_models import AzureChatOpenAI
@@ -20,8 +19,7 @@ class TestLLMResponse(unittest.TestCase):
     If that is the case, this lab may not be completable.
     """
     def test_llm_sanity_check(self):
-        deployment = os.environ['DEPLOYMENT_NAME']
-        llm = AzureChatOpenAI(deployment_name=deployment, model_name="gpt-35-turbo")
+        llm = AzureChatOpenAI(model_name="gpt-35-turbo")
 
     """
     This test will verify that the agent uses the appropriate tool for the task given.
