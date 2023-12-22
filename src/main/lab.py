@@ -30,13 +30,13 @@ However, the agent won't know which tool to use if they aren't described well.
 """
 def get_word_length(word) -> int:
     # TODO: write a description of what this tool does
-    """When given a word, this tool returns the length of that word"""
+    """TODO"""
     return len(word)
 
 
 def get_cube_of_number(number) -> int:
     # TODO: write a description of what this tool does
-    """When given a number, this tool returns the cube of that number"""
+    """TODO"""
     return pow(int(number), 3)
 
 """
@@ -49,11 +49,7 @@ tools = [
         name="get_cube_of_number",
         description="finds the cube of a number",
     ),
-    Tool.from_function(
-        func=get_word_length,
-        name="get_word_length",
-        description="finds the length of a word",
-    )
+    # TODO
 ]
 
 """
