@@ -11,23 +11,18 @@ Either be more descriptive in your tools descriptions, or just run app.py again 
 
 def main():
 
-    print("Using the agent to find the length of a word:")
-    agent_executor.invoke(
-        {"input": "What is the length of the word boogaloo?"},
-    )
+    userinput1 = input("Enter a word to find the length: ")
+    res1 = agent_executor.invoke("What is the length of " + userinput1 + "?")
 
-    print("Using the agent to find the cube of a number:")
-    agent_executor.invoke(
-        {"input": "What is 7 cubed?"}
-    )
+    print("Response Object: ", res1)
+    print(res1["output"])
 
-    print("+++++++++++++++")
+    print("=========")
 
-    response = agent_executor.invoke(
-        {"input": "What is the length of the word boogaloo?"},
-    )
+    userinput2 = input("Enter an integer (preferably from 1-10) to find the cube: ")
+    res2 = agent_executor.invoke("What is the cube of " + userinput2 + "?")
 
-    print(response["output"])
+    print("Response Object: ", res2)
 
 
 if __name__ == '__main__':
