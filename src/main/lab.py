@@ -2,15 +2,13 @@ import os
 
 from langchain.chat_models import AzureChatOpenAI
 from langchain.agents import initialize_agent, AgentType
+from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_core.tools import Tool
 
 """
 All requests to the LLM require some form of a key.
 Other sensitive data has also been hidden through environment variables.
 """
-api_key = os.environ['OPENAI_API_KEY']
-base_url = os.environ['OPENAI_API_BASE']
-version = os.environ['OPENAI_API_VERSION']
 
 """
 We will create an agent that can deduce the length of a word or the cube of a number.
@@ -19,8 +17,14 @@ The agent will decide on one process or another by matching a given task with th
 https://python.langchain.com/docs/modules/agents/
 """
 
-
-llm = AzureChatOpenAI(model_name="gpt-3.5-turbo")
+llm = HuggingFaceEndpoint(
+    endpoint_url="https://z8dvl7fzhxxcybd8.eu-west-1.aws.endpoints.huggingface.cloud",
+    huggingfacehub_api_token="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",
+    task="text-generation",
+    model_kwargs={
+        "max_new_tokens": 1024
+    }
+)
 
 """
 The two functions below will serve as tools for the agent. 
