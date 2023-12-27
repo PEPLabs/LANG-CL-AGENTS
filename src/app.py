@@ -12,7 +12,7 @@ Either be more descriptive in your tools descriptions, or just run app.py again 
 def main():
 
     userinput1 = input("Enter a word to find the length: ")
-    res1 = agent_executor.invoke("What is the length of " + userinput1 + "?")
+    res1 = agent_executor.invoke("How many letters are in the word " + userinput1 + "?")
 
     print("Response Object: ", res1)
     print(res1["output"])
