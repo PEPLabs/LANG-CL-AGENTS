@@ -38,7 +38,7 @@ class TestLLMResponse(unittest.TestCase):
         agent_executor.max_iterations = 1
 
         response = agent_executor.invoke(
-            {"input": "What is the length of the word Jurassic?"},
+            {"input": "How many letters are in the word Jurassic?"},
         )
 
         tool_used = response["intermediate_steps"][0][0].tool
@@ -62,7 +62,7 @@ class TestLLMResponse(unittest.TestCase):
 
         agent_executor.max_iterations = 1
 
-        response = agent_executor.invoke({"input": "What is the length of the word Jurassic?"})
+        response = agent_executor.invoke({"input": "How many letters are in the word Jurassic?"})
 
         # have to grab output this way due to some weirdness with huggingface's behavior with langchain agents
         print(response["intermediate_steps"][0][1])
@@ -76,4 +76,4 @@ class TestLLMResponse(unittest.TestCase):
 
         response = agent_executor.invoke("what is 3 cubed?",)
 
-        self.assertEqual(response["output"], "27")
+        self.assertEqual(response["intermediate_steps"][0][1], 27)
