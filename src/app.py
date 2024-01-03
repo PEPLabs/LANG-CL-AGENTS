@@ -4,7 +4,7 @@ from main.lab import agent_executor
 This file will contain some sample code that invokes the agent with two different tasks.
 If the lab is completed correctly, the console should show the agent determining which tool to use for the job. 
 You may modify this file in any way, it will not affect the test results.
-NOTE: The agent will occasionally trip over itself and not pick the appropriate tool. 
+NOTE: The agent will occasionally trip over itself and start talking to itself. 
 Either be more descriptive in your tools descriptions, or just run app.py again if it worked previously.
 """
 
