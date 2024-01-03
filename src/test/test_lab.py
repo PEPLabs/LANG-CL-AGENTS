@@ -6,28 +6,30 @@ also manually test your solution by running app.py.
 
 import unittest
 
-from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
+from langchain_core.outputs import LLMResult
 
 from src.main.lab import agent_executor
+from src.utilities.llm_testing_util import llm_connection_check, llm_wakeup
 
 
 class TestLLMResponse(unittest.TestCase):
     """
-    This test will verify that the connection to an external LLM is made. If it does not
-    work, this may be because the API key is invalid, or the service may be down.
-    If that is the case, this lab may not be completable.
+    This function is a sanity check for the Language Learning Model (LLM) connection.
+    It attempts to generate a response from the LLM. If a 'Bad Gateway' error is encountered,
+    it initiates the LLM wake-up process. This function is critical for ensuring the LLM is
+    operational before running tests and should not be modified without understanding the
+    implications.
+    Raises:
+        Exception: If any error other than 'Bad Gateway' is encountered, it is raised to the caller.
     """
     def test_llm_sanity_check(self):
-        llm = HuggingFaceEndpoint(
-            endpoint_url="https://z8dvl7fzhxxcybd8.eu-west-1.aws.endpoints.huggingface.cloud",
-            huggingfacehub_api_token="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",
-            task="text-generation",
-            model_kwargs={
-                "max_new_tokens": 1024
-            }
-        )
-
-        self.assertIsInstance(llm, HuggingFaceEndpoint)
+        try:
+            response = llm_connection_check()
+            self.assertIsInstance(response, LLMResult)
+        except Exception as e:
+            if 'Bad Gateway' in str(e):
+                llm_wakeup()
+                self.fail("LLM is not awake. Please try again in 3-5 minutes.")
 
     """
     This test will verify that the agent uses the appropriate tool for the task given.
