@@ -1,3 +1,5 @@
+import os
+
 from langchain.agents import initialize_agent, AgentType
 from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_core.tools import Tool
